@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Routes, Route } from "react-router-dom";
-import FlashcardTab from "./pages/FlashcardTab";
-import MindmapTab from "./pages/MindmapTab";
-import QuizTab from "./pages/QuizTab";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Slots from "./pages/Slots";
 import Navbar from "./components/Navbar"; 
 
 import './App.css'
@@ -13,9 +13,9 @@ function App() {
     <>
     <Navbar />
       <Routes>
-      <Route path="/" element={<FlashcardTab />} />
-      <Route path="/mindmap" element={<MindmapTab />} />
-      <Route path="/quiz" element={<QuizTab />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/slots" element={<Slots />} />
       </Routes>
       
     </>

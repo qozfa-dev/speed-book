@@ -5,9 +5,9 @@ export default function Navbar() {
   return (
     <nav>
       <ul>
-        <li><Link to="/">/FlashcardTab</Link></li>
-        <li><Link to="/mindmap">MindmapTab</Link></li>
-        <li><Link to="/quiz">QuizTab</Link></li>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/dashboard">Dashboard</Link></li>
+        <li><Link to="/slots">Slots</Link></li>
       </ul>
     </nav>
   );
