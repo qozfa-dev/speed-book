@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Slots from "./pages/Slots";
 import Navbar from "./components/Navbar"; 
 
+
 import './App.css'
 
 function App() {
