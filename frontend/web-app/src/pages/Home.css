@@ -1,10 +1,10 @@
 /* General Page Layout */
 .home-container {
-  background-color: #e3f2fd; /* Light blue background */
+  background-color: #e3f2fd; 
   color: #333;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centering sections */
+  align-items: center; 
   padding: 40px;
   width: 100%;
   max-width: 1200px;
@@ -12,7 +12,6 @@
   overflow-x: hidden;
 }
 
-/* Fixed Site Title */
 .site-title {
   font-size: 60px;
   color: #1565c0;
@@ -21,7 +20,6 @@
   left: 40px;
 }
 
-/* Hero Section */
 .hero {
   width: 85vw;
   text-align: center;
@@ -41,7 +39,6 @@
   padding-bottom: 20px;
 }
 
-/* CTA Button */
 .cta-button {
   background-color: #1565c0;
   color: white;
@@ -57,13 +54,10 @@
   margin-right: auto; /* Centers the button */
 }
 
-
-/* Button Hover Effect */
 .cta-button:hover {
   background-color: #0d47a1; /* Darker blue */
 }
 
-/* White Cards for Sections */
 .card {
   background: white;
   padding: 30px;
@@ -74,7 +68,6 @@
   text-align: center;
 }
 
-/* How It Works */
 .how-it-works .steps {
   text-align: left;
   margin: 20px 0;
@@ -85,7 +78,6 @@
   margin: 10px 0;
 }
 
-/* Why Use This */
 .why-use ul {
   list-style-type: none;
   padding: 0;
@@ -97,13 +89,11 @@
   margin: 10px 0;
 }
 
-/* Testimonials */
 .testimonials p {
   font-size: 16px;
   font-style: italic;
 }
 
-/* Footer */
 .footer {
   margin-top: 50px;
   padding: 20px 0;
