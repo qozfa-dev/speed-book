@@ -1,0 +1,182 @@
+/* General Page Layout */
+.dashboard-container {
+    background-color: #e3f2fd; 
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    padding: 40px;
+    width: 100vw;
+    max-width: 1183px;
+    margin: 0 auto;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif; 
+  }
+  
+  /* Section Title */
+  h2 {
+    font-size: 32px;
+    color: #1565c0;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+  }
+  
+  /* General Section Styling */
+  section {
+    background-color: white;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out;
+    
+  }
+  
+  /* Hover effect for sections */
+  section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Status Overview */
+  .status-overview {
+    background-color: #f4fce7;
+    
+  }
+  
+  .status-details p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+  /* Test Slot Finder */
+  .test-slot-finder {
+    background-color: #c5cae9;
+  }
+  
+  .test-slot-finder p {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  
+  /* Lesson Booking Section */
+  .lesson-booking {
+    background-color: #ffe0b2;
+  }
+  
+  .lesson-booking p {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  
+  /* Notifications & Alerts */
+  .notifications {
+    background-color: #fff3e0;
+  }
+  
+  .notifications p {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  /* Quick Actions Panel */
+  .quick-actions {
+    background-color: #ffe0b2;
+  }
+  
+  .quick-actions ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 18px;
+  }
+  
+  .quick-actions li {
+    margin: 10px 0;
+  }
+  
+  /* Settings & Account Management */
+  .settings {
+    background-color: #e1f5fe;
+  }
+  
+  .settings ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 18px;
+  }
+  
+  .settings li {
+    margin: 10px 0;
+  }
+  
+  /* CTA Button */
+  .cta-button {
+    background-color: #1565c0;
+    color: white;
+    font-size: 18px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-block;
+  }
+  
+  .cta-button:hover {
+    background-color: #0d47a1; /* Darker blue */
+  }
+  
+  /* Footer */
+  .footer {
+    margin-top: 50px;
+    padding: 20px 0;
+    height: 10vh;
+    width: 100vw;
+    background-color: #1565c0;
+    color: white;
+    text-align: center;
+  }
+  
+  .footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .dashboard-container {
+      padding: 20px;
+    }
+  
+    .cta-button {
+      font-size: 16px;
+      padding: 10px 20px;
+    }
+  
+    .quick-actions ul, .settings ul {
+      font-size: 16px;
+    }
+  
+    /* Making sections take full width on small screens */
+    section {
+      width: 100%;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+  }
+  
