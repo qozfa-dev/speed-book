@@ -36,13 +36,12 @@ function Dashboard() {
 
       {/* Lesson Booking Section */}
       <section className="lesson-booking">
-        <h2>Lesson Booking Section 📅</h2>
-        <p><strong>Upcoming Lessons:</strong> March 5, 2025 @ 3:00 PM</p>
-        <p><strong>Instructor:</strong> John Smith – Contact</p>
-        <p><strong>Lesson Gaps Available:</strong> New slots found: March 7, 8, 10</p>
+        <h2>Lesson History 📅</h2>
+        <p><strong>Past Instructor:</strong> Pam Kelly</p>
+        <p><strong>Total lessons:</strong> 6</p>
         <div className="cta-buttons">
-          <button className="cta-button" onClick={() => navigate("/slots")}>Book Now</button>
-          <button className="cta-button" onClick={() => navigate("/slots")}>Find More Lessons</button>
+          <button className="cta-button">Add a review</button>
+          <button className="cta-button" onClick={() => navigate("/slots")}>View Instructor</button>
         </div>
       </section>
 
