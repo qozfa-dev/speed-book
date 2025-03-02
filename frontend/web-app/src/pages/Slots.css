@@ -1,9 +1,13 @@
+body {
+    overflow-x: hidden;
+  }
+
 /* General Layout */
 .slots-container {
     background-color: #e3f2fd;
     color: #333;
     padding: 40px;
-    /* max-width: 1250px; */
+    max-width: 1250px;
     width: 100vw;
     margin: 0 auto;
     font-family: 'Roboto', sans-serif;
@@ -15,6 +19,7 @@
     font-size: 36px;
     color: #1565c0;
     margin-bottom: 30px;
+    padding-top: 20px;
   }
   
   /* Filter Section */
@@ -50,6 +55,8 @@
   .cta-button:hover {
     background-color: #0d47a1;
   }
+
+  
   
   /* Test Slots Section */
   .test-slots, .lesson-slots, .alerts {

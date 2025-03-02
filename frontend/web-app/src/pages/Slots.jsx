@@ -198,7 +198,8 @@ const SlotsPage = () => {
         <p className="alert">🚨 Test Slot in your area has opened up! Grab it before it’s gone.</p>
         <button className="cta-button">Book Now</button>
       </section>
-    </div>
+    </div>    
+
   );
 };
 
