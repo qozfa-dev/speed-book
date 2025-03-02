@@ -135,6 +135,33 @@ const SlotsPage = () => {
       <section className="test-slots">
         <h2>Available Test Slots</h2>
         <div className="slot-list">
+          {/* Card 1 for Test Slot */}
+    <div className="slot-card">
+      <h3>Test Center A</h3>
+      <p>Date: March 5th, 2025</p>
+      <p>Time: 10:00 AM - 11:00 AM</p>
+      <p>Location: Newham</p>
+      <button className="cta-button">Book Slot</button>
+    </div>
+
+    {/* Card 2 for Test Slot */}
+    <div className="slot-card">
+      <h3>Test Center B</h3>
+      <p>Date: March 6th, 2025</p>
+      <p>Time: 2:00 PM - 3:00 PM</p>
+      <p>Location: Canary Wharf</p>
+      <button className="cta-button">Book Slot</button>
+      </div>
+
+      {/* Card 3 for Test Slot */}
+    <div className="slot-card">
+      <h3>Test Center C</h3>
+      <p>Date: March 8th, 2025</p>
+      <p>Time: 10:00 AM - 11:00 AM</p>
+      <p>Location: Russel Square</p>
+      <button className="cta-button">Book Slot</button>
+      </div>
+
           {/* Map through available test slots here */}
         </div>
         <button className="cta-button">Check More Slots</button>
@@ -144,7 +171,22 @@ const SlotsPage = () => {
       <section className="lesson-slots">
         <h2>Available Lesson Slots</h2>
         <div className="lesson-list">
-          {/* Map through available lesson slots here */}
+          {/* Card 1 for Lesson Slot */}
+    <div className="lesson-card">
+      <h3>Instructor: John Doe</h3>
+      <p>Location: Newham Test Center</p>
+      <p>Time: March 5th, 2025 - 1:00 PM</p>
+      <p>Duration: 1 Hour</p>
+      <p>Price: £50</p>
+      </div>
+
+      <div className="lesson-card">
+      <h3>Instructor: Jane Smith</h3>
+      <p>Location: Canary Wharf</p>
+      <p>Time: March 6th, 2025 - 3:00 PM</p>
+      <p>Duration: 1 Hour</p>
+      <p>Price: £55</p>
+      </div>
         </div>
         <button className="cta-button">Find More Lessons</button>
       </section>
