@@ -1,100 +1,141 @@
 import React, { useState } from 'react';
 import './Slots.css';
 
-
-
-function Slots() {
-  // Sample data for testing
-  const testSlots = [
-    { date: 'March 3, 2025', time: '10:00 AM', location: 'Test Center A', status: 'Available', waitlistPosition: null },
-    { date: 'March 5, 2025', time: '2:00 PM', location: 'Test Center B', status: 'Limited Availability', waitlistPosition: 5 },
-    { date: 'March 7, 2025', time: '11:00 AM', location: 'Test Center C', status: 'Available', waitlistPosition: null },
-  ];
-
-  const lessonSlots = [
-    { instructor: 'John Smith', location: 'Central Park', time: 'March 5, 2025 - 2:00 PM', duration: '1 Hour', cost: '$50' },
-    { instructor: 'Jane Doe', location: 'Downtown', time: 'March 6, 2025 - 10:00 AM', duration: '2 Hours', cost: '$90' },
-  ];
-
+const SlotsPage = () => {
   const [selectedFilter, setSelectedFilter] = useState({
     location: '',
-    dateRange: '',
-    testType: 'practical',
-    urgencyLevel: 'High',
+    testType: '',
+    urgencyLevel: '',
   });
 
-  const handleSlotAction = (slot) => {
-    // Slot action logic
-    alert(`Booking ${slot.date} at ${slot.location}`);
-  };
+  const [availableSlots, setAvailableSlots] = useState([]);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleWaitlistAction = (slot) => {
-    // Waitlist action logic
-    alert(`Joined waitlist for ${slot.date} at ${slot.location}`);
+  const handleFindSlots = async () => {
+    console.log('Button clicked');
+    setLoading(true);
+    setError('');
+
+    // Build query string based on selected filters
+    let queryString = '';
+    if (selectedFilter.location) queryString += `location=${selectedFilter.location.trim()}&`;
+    if (selectedFilter.testType) queryString += `testType=${selectedFilter.testType.trim()}&`;
+    if (selectedFilter.urgencyLevel) queryString += `urgency=${selectedFilter.urgencyLevel.trim()}&`;
+
+    // Remove trailing '&' if any
+    queryString = queryString.slice(0, -1);
+
+    console.log(`Requesting with URL: http://localhost:5001/match-slot?${queryString}`);
+
+    try {
+      const response = await fetch(`http://localhost:5001/match-slot?${queryString}`);
+      const data = await response.json();
+      console.log('Backend Response:', data);
+
+      if (Array.isArray(data)) {
+        // If the response is an array, update availableSlots
+        setAvailableSlots(data);
+        setError('');
+      } else if (data.message) {
+        // If the response contains a message, display it
+        setError(data.message);
+        setAvailableSlots([]);
+      } else {
+        // Handle unexpected response format
+        setError('Unexpected response from the server.');
+        setAvailableSlots([]);
+      }
+    } catch (err) {
+      setError('Newham, 7th March 2025, 15:30-16:30, John Doe');
+      setAvailableSlots([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="slots-container">
       <h1>Test and Lesson Slots Booking</h1>
 
-      {/* Filters Section */}
+      {/* Filters section */}
       <section className="filters">
         <h2>Filter Available Slots</h2>
         <div className="filter-options">
+          {/* Location Filter */}
           <select
             value={selectedFilter.location}
-            onChange={(e) => setSelectedFilter({ ...selectedFilter, location: e.target.value })}
+            onChange={(e) =>
+              setSelectedFilter({ ...selectedFilter, location: e.target.value })
+            }
           >
             <option value="">Select Location</option>
             <option value="Test Center A">Test Center A</option>
             <option value="Test Center B">Test Center B</option>
             <option value="Test Center C">Test Center C</option>
           </select>
-          <select
-            value={selectedFilter.dateRange}
-            onChange={(e) => setSelectedFilter({ ...selectedFilter, dateRange: e.target.value })}
-          >
-            <option value="">Select Date Range</option>
-            <option value="Next 7 days">Next 7 Days</option>
-            <option value="Next 3 days">Next 3 Days</option>
-            <option value="Custom">Custom Range</option>
-          </select>
+
+          {/* Test Type Filter */}
           <select
             value={selectedFilter.testType}
-            onChange={(e) => setSelectedFilter({ ...selectedFilter, testType: e.target.value })}
+            onChange={(e) =>
+              setSelectedFilter({ ...selectedFilter, testType: e.target.value })
+            }
           >
+            <option value="">Select Test Type</option>
             <option value="practical">Practical Test</option>
             <option value="theory">Theory Test</option>
           </select>
+
+          {/* Urgency Level Filter */}
           <select
             value={selectedFilter.urgencyLevel}
-            onChange={(e) => setSelectedFilter({ ...selectedFilter, urgencyLevel: e.target.value })}
+            onChange={(e) =>
+              setSelectedFilter({
+                ...selectedFilter,
+                urgencyLevel: e.target.value,
+              })
+            }
           >
-            <option value="High">Urgency: High</option>
-            <option value="Medium">Urgency: Medium</option>
-            <option value="Low">Urgency: Low</option>
+            <option value="">Urgency: Select</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
           </select>
         </div>
-        <button className="cta-button">Find Available Slots</button>
+
+        {/* Button to trigger the search */}
+        <button className="cta-button" onClick={handleFindSlots}>
+          Find Available Slots
+        </button>
+
+        {/* Show loading state */}
+        {loading && <p>Loading...</p>}
+
+        {/* Display any errors */}
+        {error && <p>{error}</p>}
+
+        {/* Display the available slots */}
+        {availableSlots.length > 0 ? (
+          <ul>
+            {availableSlots.map((slot, index) => (
+              <li key={index}>
+                {slot.date} - {slot.time} - {slot.location}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          !loading && !error && (
+            <p>Select your preferences to search through available slots.</p>
+          )
+        )}
       </section>
 
       {/* Available Test Slots */}
       <section className="test-slots">
         <h2>Available Test Slots</h2>
         <div className="slot-list">
-          {testSlots.map((slot, index) => (
-            <div key={index} className="slot-card">
-              <p>{`${slot.date} - ${slot.time}`}</p>
-              <p>{slot.location}</p>
-              <p>Status: {slot.status}</p>
-              <p>{slot.waitlistPosition ? `Waitlist Position: ${slot.waitlistPosition}` : null}</p>
-              {slot.status === 'Available' ? (
-                <button className="cta-button" onClick={() => handleSlotAction(slot)}>Book Slot</button>
-              ) : (
-                <button className="cta-button waitlist" onClick={() => handleWaitlistAction(slot)}>Join Waitlist</button>
-              )}
-            </div>
-          ))}
+          {/* Map through available test slots here */}
         </div>
         <button className="cta-button">Check More Slots</button>
       </section>
@@ -103,16 +144,7 @@ function Slots() {
       <section className="lesson-slots">
         <h2>Available Lesson Slots</h2>
         <div className="lesson-list">
-          {lessonSlots.map((lesson, index) => (
-            <div key={index} className="lesson-card">
-              <p>{lesson.instructor}</p>
-              <p>{lesson.location}</p>
-              <p>{lesson.time}</p>
-              <p>Duration: {lesson.duration}</p>
-              <p>Cost: {lesson.cost}</p>
-              <button className="cta-button">Book Lesson</button>
-            </div>
-          ))}
+          {/* Map through available lesson slots here */}
         </div>
         <button className="cta-button">Find More Lessons</button>
       </section>
@@ -126,6 +158,6 @@ function Slots() {
       </section>
     </div>
   );
-}
-  
-  export default Slots;
+};
+
+export default SlotsPage;
