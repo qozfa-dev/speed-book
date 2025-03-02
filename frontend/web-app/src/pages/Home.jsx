@@ -1,12 +1,14 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import './Home.css';
 
 function Home() {
+  const navigate = useNavigate();
   return (
     <div className="home-container">
 
       {/* Fixed Site Title */}
-      <h1 className="site-title">Driving Mate</h1>
+      <h1 className="site-title">Speed Book</h1>
 
       {/* Hero Section */}
       <section className="hero">
@@ -14,7 +16,7 @@ function Home() {
         <p className="hero-subtext">
           We auto-match you to last-minute test cancellations & open instructor slots. Stop refreshing, start driving!
         </p>
-        <button className="cta-button">Sign Up Now</button>
+        <button className="cta-button" onClick={() => navigate("/slots")}>Book Now</button>
       </section>
 
       {/* How It Works */}
@@ -25,19 +27,19 @@ function Home() {
           <div className="step">✅ <strong>Get Auto-Matched</strong> – We find last-minute slots & book you in.</div>
           <div className="step">✅ <strong>Start Driving Sooner!</strong> – No more manual searching.</div>
         </div>
-        <button className="cta-button">Find My Slot</button>
+        <button className="cta-button" onClick={() => navigate("/slots")}>Find My Slot</button>
       </section>
 
       {/* Why Use This */}
       <section className="why-use card">
-        <h2>Why Use This?</h2>
+        <h2>Why Use Speed Book?</h2>
         <ul>
           <li>🔹 <strong>Test Sooner</strong> – Grab canceled test slots instantly.</li>
           <li>🔹 <strong>Find Lessons Fast</strong> – Get matched to nearby instructors.</li>
           <li>🔹 <strong>No Manual Searching</strong> – We notify & book for you.</li>
           <li>🔹 <strong>Save Time & Stress</strong> – Focus on passing, not hunting for slots.</li>
         </ul>
-        <button className="cta-button">Join Now</button>
+        {/* <button className="cta-button">Join Now</button> */}
       </section>
 
       {/* Testimonials */}

@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import './Dashboard.css';
 
 function Dashboard() {
+  const navigate = useNavigate();
   return (
     <div className="dashboard-container">
 
@@ -14,8 +16,8 @@ function Dashboard() {
           <p><strong>Your Lessons:</strong> 3 lessons booked | Next: March 5, 2025</p>
         </div>
         <div className="cta-buttons">
-          <button className="cta-button">Find Earlier Test Slot</button>
-          <button className="cta-button">Find More Lessons</button>
+          <button className="cta-button" onClick={() => navigate("/slots")}>Find Earlier Test Slot</button>
+          <button className="cta-button" onClick={() => navigate("/slots")}>Find More Lessons</button>
         </div>
       </section>
 
@@ -27,8 +29,8 @@ function Dashboard() {
         <p><strong>Auto-Book Last-Minute Cancellations:</strong> ✅ Enabled</p>
         <p><strong>Waitlist Status:</strong> Position: #5 – Estimated match in ~3 days</p>
         <div className="cta-buttons">
-          <button className="cta-button">Modify Preferences</button>
-          <button className="cta-button">Check for Cancellations</button>
+          <button className="cta-button" onClick={() => navigate("/slots")}>Modify Preferences</button>
+          <button className="cta-button" onClick={() => navigate("/slots")}>Check for Cancellations</button>
         </div>
       </section>
 
@@ -39,8 +41,8 @@ function Dashboard() {
         <p><strong>Instructor:</strong> John Smith – Contact</p>
         <p><strong>Lesson Gaps Available:</strong> New slots found: March 7, 8, 10</p>
         <div className="cta-buttons">
-          <button className="cta-button">Book Now</button>
-          <button className="cta-button">Find More Lessons</button>
+          <button className="cta-button" onClick={() => navigate("/slots")}>Book Now</button>
+          <button className="cta-button" onClick={() => navigate("/slots")}>Find More Lessons</button>
         </div>
       </section>
 
@@ -49,7 +51,7 @@ function Dashboard() {
         <h2>Notifications & Alerts 🔔</h2>
         <p>📌 New Test Slot Available – March 10, 2025 (Book Now!)</p>
         <p>📌 Instructor John Smith has a cancellation on March 7 – Claim Now!</p>
-        <button className="cta-button">View All Notifications</button>
+        <button className="cta-button" onClick={() => navigate("/slots")}>View All Notifications</button>
       </section>
 
       {/* Quick Actions Panel */}
